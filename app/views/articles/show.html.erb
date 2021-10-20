@@ -8,44 +8,23 @@
   <%= @article.body %>
 </p>
 
-<!-- <ul> -->
-  <!-- <li> -->
-    <%# <%= link_to "Edit", edit_article_path(@article) %>
-  <!-- </li> -->
-
-  <!-- <li> -->
-  <%# <%= link_to "Destroy", article_path(@article), %>
-                  <%# method: :delete, %>
-                  <%# data: { confirm: "Are you sure" } %>
-  <!-- </li> -->
-<!-- </ul> -->
+<% if @article.comments.count.zero? %>
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure" } %></li>
+</ul>
+<% end %>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<%= render @article.comments %>
 
 <h2>Add a comment:</h2>
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :comment %><br>
-    <%= form.text_area:body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form' %>
 
-<li><%= link_to "Edit", edit_article_path(@article) %> | <%= link_to "Back", root_path %></li>
+<% unless @article.comments.count.zero? %>
+  <li><%= link_to "Edit", edit_article_path(@article) %> | <%= link_to "Back", root_path %></li>
+<% else %>
+  <li><%= link_to "Back", root_path %></li>
+<% end %>
