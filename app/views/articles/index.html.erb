@@ -1,8 +1,8 @@
-<div class="containter-fluid" style="margin-top: 10%;height:80%; width: 99%;">
-  <div class="row align-items-center" style="margin: 1%; margin-left:10%;">
+<div class="containter-fluid super-container-version-one">
+  <div class="row" id="general-home-article-view">
     <% @articles.each do |article| %>
 
-      <a class="col-sm-4" href="<%= article_path(article) %>" style="background-color: rgba(102, 18, 168, 0.46); text-decoration: none; color:white; min-height: 230px; width: 30%; border: white solid 10px; border-radius: 20px; padding:2%; padding-top:%; padding-bottom:5%;  text-align:center">
+      <a class="col-sm-4" href="<%= article_path(article) %>" id="specific-home-article-view">
         <div>
           <h3><%= article.title.first(40) %></h3>
         </div>
@@ -12,8 +12,8 @@
   </div>
 </div>
 
-<div class="containter-fluid" style="margin-top: 1%;height:80%; width: 99%;">
-  <div class="row" style="margin: 1%; margin-left:10%;">
+<div class="containter-fluid">
+  <div class="row" id="pagination">
     <%== pagy_bootstrap_nav(@pagy) %>
   </div>
 </div>

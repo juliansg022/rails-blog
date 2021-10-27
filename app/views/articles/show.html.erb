@@ -1,10 +1,9 @@
-<div class="containter-fluid" style="margin-top: 10%;height:80%; width: 99%;">
-  <div class="row align-items-center" style="margin: 1%; margin-left:10%; margin-right: 10%">
-
-    <div class="col-sm-12" style="background-color: rgba(102, 18, 168, 0.46); text-decoration: none; color:white; min-height: 230px;  border: white solid 10px; border-radius: 20px; padding:2%; padding-top:%; padding-bottom:5%;  text-align:center">
+<div class="containter-fluid super-container-version-one">
+  <div class="row" id="article-container">
+    <div class="col-sm-12 article-item">
       <div>
         <h3><%= @article.title %></h3><br>
-        <p style="text-align:justify; color: black">
+        <p id="item-body">
           <%= @article.body %>
         </p>
       </div>
@@ -12,25 +11,23 @@
   </div>
 </div>
 
-<div class="containter-fluid" style="margin-top: 2%;height:80%; width: 99%;">
-  <div class="row align-items-center" style="margin: 1%; margin-left:15%; margin-right: 10%">
+<div class="containter-fluid">
+  <div class="row" id="comment-container">
     <h2>Comments:</h2>
     <%= render @article.comments %>
   </div>
 </div>
 
-<div class="containter-fluid" style="margin-top: 2%;height:80%; width: 99%; margin-bottom:10%">
-  <div class="row align-items-center" style="margin: 1%; margin-left:15%; margin-right: 10%">
+<div class="containter-fluid super-container-version-two">
+  <div class="row" id="comment-container">
     <h2>Add a comment:</h2>
-    <div
-      class="col-sm-9"
-      style="background-color: rgba(149, 149, 149, 0.63); text-decoration: none; color:#3CA5A5; min-height: 230px; width: 90%; border: white solid 10px; border-radius: 20px; padding:2%; padding-top:%; padding-bottom:5%;  text-align:justify">
+    <div class="col-sm-9" id="new-comment">
       <%= render 'comments/form' %>
     </div>
   </div>
-  <div class="row align-items-center" style="margin-left:15%; margin-right: 10%; display: inline-block">
-    <li style="list-style:none"><%= link_to "Back", root_path, class: "btn btn-primary" %>
-    <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-warning" %>
-    <%= link_to "Destroy Article", article_path(@article), method: :delete, data: { confirm: "Are you sure" }, class: "btn btn-danger" %></li>
+  <div class="row" id="option-buttons">
+    <li><%= link_to "Back", root_path, class: "btn btn-primary" %>
+      <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-warning" %>
+      <%= link_to "Destroy Article", article_path(@article), method: :delete, data: { confirm: "Are you sure" }, class: "btn btn-danger" %></li>
   </div>
 </div>

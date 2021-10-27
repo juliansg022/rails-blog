@@ -1,3 +1,67 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.super-container-version-one .super-container-version-two {
+  height: 80%;
+  width: 99%;
+}
+
+.super-container-version-one {
+  margin-top: 10%;
+}
+
+.super-container-version-two {
+  margin-top: 2%;
+  margin-bottom: 10%;
+}
+
+#article-container,
+#comment-container {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-right: 10%;
+}
+
+#article-container {
+  margin-left: 10%;
+}
+
+#general-home-article-view {
+  margin: 1% 1% 1% 10%;
+}
+
+#specific-home-article-view,
+.article-item {
+  background-color: rgba(102, 18, 168, 0.46);
+  color: white;
+  min-height: 230px;
+  border: white solid 10px;
+  border-radius: 20px;
+  padding: 2% 2% 5%;
+  text-align: center;
+}
+
+#specific-home-article-view {
+  text-decoration: none;
+  width: 30%;
+}
+
+#option-buttons {
+  margin-left: 15%;
+  margin-right: 10%;
+  display: inline-block;
+}
+
+#pagination {
+  margin: 2% 2% 2% 10%;
+}
+
+#form-article {
+  margin: 1% 20%;
+  text-align: center;
+}
+
+#option-buttons li {
+  list-style: none;
+}

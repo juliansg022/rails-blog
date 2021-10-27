@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+.credits {
+  padding: 1%;
+  text-align: center;
+}
+
+.general-container {
+  height: 10%;
+  background-color: #3CA5A5;
+}
+
+.menu-items {
+  padding: 0.5%;
+}
+
+#menu-item {
+  text-decoration: none;
+  color: white;
+}
+
+.credits a {
+  color: black
+}
+
+.navigation {
+  text-align: center;
+  padding-top: 1%
+}
