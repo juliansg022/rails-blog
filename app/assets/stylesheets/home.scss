@@ -1,3 +1,29 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@media (max-width: 360px) {
+  .home-container {
+    height: calc(100vh + 40px);
+    margin-top: 5%;
+  }
+}
+@media (max-width: 720px) {
+  .home-container {
+    height: calc(100vh + 40px);
+    margin-top: 5%;
+  }
+}
+@media (min-width: 1000px) {
+  .home-container {
+    height: calc(100vh - 420px);
+    margin-top: 5%;
+  }
+}
+
+#principal-container div div ul li {
+  margin-left: 50px
+}
+
+#principal-container div div h3 {
+  text-align: center
+}
