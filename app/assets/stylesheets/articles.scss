@@ -7,10 +7,6 @@
   width: 99%;
 }
 
-.super-container-version-one {
-  margin-top: 10%;
-}
-
 .super-container-version-two {
   margin-top: 2%;
   margin-bottom: 10%;
@@ -31,9 +27,8 @@
   margin: 1% 1% 1% 10%;
 }
 
-#specific-home-article-view,
 .article-item {
-  background-color: rgba(102, 18, 168, 0.46);
+  background-color: rgb(52, 127, 144);
   color: white;
   min-height: 230px;
   border: white solid 10px;
@@ -42,10 +37,16 @@
   text-align: center;
 }
 
-#specific-home-article-view {
+.container .row .col {
   text-decoration: none;
-  width: 30%;
+  color: white;
 }
+
+.container .row .col .card {
+  background-color: rgb(52, 127, 144);
+  text-align: center;
+}
+
 
 #option-buttons {
   margin-left: 15%;
@@ -53,8 +54,9 @@
   display: inline-block;
 }
 
-#pagination {
-  margin: 2% 2% 2% 10%;
+.pagination {
+  margin-top: 10%;
+  margin-bottom: 2%;
 }
 
 #form-article {
