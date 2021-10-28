@@ -1,21 +1,19 @@
-<h1>Articles</h1>
+<div class="containter-fluid super-container-version-one">
+  <div class="row" id="general-home-article-view">
+    <% @articles.each do |article| %>
 
-<li>Our blog has:
-  <ul><%= Article.public_count %> public articles.</ul>
-  <ul><%= Article.private_count %> private articles.</ul>
-  <ul><%= Article.archived_count %> archived articles.</ul>
-  <ul><%= Article.nil_count %> articles without status.</ul>
-  and counting!
-</li>
+      <a class="col-sm-4" href="<%= article_path(article) %>" id="specific-home-article-view">
+        <div>
+          <h3><%= article.title.first(40) %></h3>
+        </div>
+      </a>
 
-<ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
     <% end %>
-  <% end %>
-</ul>
+  </div>
+</div>
 
-<%= link_to "New Article", new_article_path %>
+<div class="containter-fluid">
+  <div class="row" id="pagination">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+</div>
