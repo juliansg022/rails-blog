@@ -31,18 +31,11 @@
   color: white;
 }
 
-.navigation {
-  text-align: center;
-  padding-top: 1%
-}
-
 .footer {
   height: 150px;
   margin-top: 95px;
   padding: 10px;
 }
-
-
 
 @media (max-width: 360px) {
   #principal-container {

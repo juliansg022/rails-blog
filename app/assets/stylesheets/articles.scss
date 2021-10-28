@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.super-container-version-one .super-container-version-two {
+.super-container-version-one,
+.super-container-version-two {
   height: 80%;
   width: 99%;
 }
@@ -23,18 +24,12 @@
   margin-left: 10%;
 }
 
-#general-home-article-view {
-  margin: 1% 1% 1% 10%;
-}
-
 .article-item {
-  background-color: rgb(52, 127, 144);
   color: white;
   min-height: 230px;
   border: white solid 10px;
   border-radius: 20px;
   padding: 2% 2% 5%;
-  text-align: center;
 }
 
 .container .row .col {
@@ -42,11 +37,11 @@
   color: white;
 }
 
+.article-item,
 .container .row .col .card {
   background-color: rgb(52, 127, 144);
   text-align: center;
 }
-
 
 #option-buttons {
   margin-left: 15%;
