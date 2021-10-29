@@ -2,6 +2,7 @@
 
 # ArticlesController class
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!
   http_basic_authenticate_with name: 'julian', password: 'secret', except: %i[index show]
   def index
     @pagy, @articles = pagy(Article.all)
