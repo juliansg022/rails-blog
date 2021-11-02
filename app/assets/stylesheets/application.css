@@ -23,6 +23,11 @@
   padding: 10px;
 }
 
+.item-link {
+  text-decoration: none;
+  /* color: black */
+}
+
 #item-footer a {
   text-decoration: none;
   color: white;
