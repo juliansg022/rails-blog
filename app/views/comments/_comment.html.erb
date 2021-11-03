@@ -9,9 +9,7 @@
     <%= comment.body %>
   </p>
   <br><br>
-  <% if user_signed_in?
-      if comment.user_id == current_user.id %>
+  <% if user_signed_in? && comment.user_id == current_user.id %>
     <p id="destroy-comment"><%= link_to 'Destroy comment', [comment.article, comment], method: :delete, data: { confirm: "Are you sure" }, class: 'btn btn-danger'%></p>
-    <% end
-  end %>
-    </div>
+  <% end %>
+</div>

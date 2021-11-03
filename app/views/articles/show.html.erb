@@ -29,12 +29,10 @@
   <% end %>
   <div class="row" id="option-buttons">
     <li><%= link_to "Back", articles_path, class: "btn btn-primary" %>
-      <% if user_signed_in?
-      if @article.user_id == current_user.id %>
+      <% if user_signed_in? && @article.user_id == current_user.id %>
         <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-warning" %>
         <%= link_to "Destroy Article", article_path(@article), method: :delete, data: { confirm: "Are you sure" }, class: "btn btn-danger" %>
-        <% end
-      end %>
-        </li>
-      </div>
-    </div>
+      <% end %>
+    </li>
+  </div>
+</div>
