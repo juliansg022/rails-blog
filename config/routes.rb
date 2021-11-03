@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get '/my_articles', to: 'articles#my_articles', as: "my_articles"
+  get '/my_articles', to: 'articles#my_articles', as: 'my_articles'
 end

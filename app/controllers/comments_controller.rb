@@ -8,9 +8,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create(comment_params)
     @comment.user_id = current_user.id
 
-    if @comment.save
-      redirect_to article_path(@article)
-    end
+    redirect_to article_path(@article) if @comment.save
   end
 
   def destroy
