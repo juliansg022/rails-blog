@@ -2,7 +2,7 @@
 
 # CommentsController class
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[index show]
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   def destroy
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
-    @comment.destroy
+    @comment.destroy if @comment.user_id == current_user.id
     redirect_to article_path(@article)
   end
 

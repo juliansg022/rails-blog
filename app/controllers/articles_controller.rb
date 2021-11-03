@@ -2,10 +2,10 @@
 
 # ArticlesController class
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[index show]
 
   def my_articles
-    @pagy, @articles = pagy(Article.where user_id: current_user.id)
+    @pagy, @articles = pagy(Article.where(user_id: current_user.id))
   end
 
   def index
@@ -40,17 +40,19 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
 
-    if @article.update(article_params)
-      redirect_to @article
-    else
-      render :edit
+    if @article.user_id == current_user.id
+      if @article.update(article_params)
+        redirect_to @article
+      else
+        render :edit
+      end
     end
   end
 
   # D methods (CRUD)
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
+    @article.destroy if @article.user_id == current_user.id
 
     redirect_to root_path
   end
