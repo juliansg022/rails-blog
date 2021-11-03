@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  get '/my_articles', to: 'articles#my_articles', as: "my_articles"
 end

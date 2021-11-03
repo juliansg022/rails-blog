@@ -11,7 +11,7 @@
 
     <div class="field input-group mb-3">
       <%= f.label :name, class: "btn btn-outline-secondary", type: 'button' %><br/>
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', required: 'true' %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', required: 'true', minlength: 10 %>
     </div>
 
     <div class="field input-group mb-3">
