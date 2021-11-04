@@ -1,7 +1,7 @@
 <div class="col-sm-3" id="comment-item">
   <p>
     <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <%= comment.user.name %>
   </p>
 
   <p>
@@ -9,6 +9,7 @@
     <%= comment.body %>
   </p>
   <br><br>
-  <p id="destroy-comment"><%= link_to 'Destroy comment', [comment.article, comment], method: :delete, data: { confirm: "Are you sure" }, class: 'btn btn-danger'%>
-  </p>
+  <% if user_signed_in? && comment.user_id == current_user.id %>
+    <p id="destroy-comment"><%= link_to 'Destroy comment', [comment.article, comment], method: :delete, data: { confirm: "Are you sure" }, class: 'btn btn-danger'%></p>
+  <% end %>
 </div>

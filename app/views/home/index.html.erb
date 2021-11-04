@@ -1,0 +1,40 @@
+<div class="container home-container">
+
+  <div class="card text-left">
+    <div class="card-header">
+      <h3 class="card-title">Important Information</h3>
+    </div>
+    <div class="card-body">
+
+      <h5 class="card-text">
+        <ul>Our blog has:<br><br>
+          <li><%= Article.public_count %>
+            public articles.</li>
+          <li><%= Article.private_count %>
+            private articles.</li>
+          <li><%= Article.archived_count %>
+            archived articles.</li>
+          <li><%= Article.nil_count %>
+            articles without status.</li><br>
+          and counting!
+        </ul>
+      </h5>
+
+    </div>
+    <div class="card-footer text-muted">
+
+      <% unless notice.nil? %>
+        <div class="alert alert-info" role="alert">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% end %>
+
+      <% unless alert.nil? %>
+        <div class="alert alert-info" role="alert">
+          <p class="alert"><%= alert %></p>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

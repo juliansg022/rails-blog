@@ -2,7 +2,7 @@
 <div class="form-group">
   <br>
   <h4><%= form.label :commenter %></h4>
-  <%= form.text_field :commenter, class: 'form-control' %>
+  <%= form.text_field :commenter, class: 'form-control', value: current_user.name, readonly: true %>
 </div>
 <br>
 <div class="form-group">

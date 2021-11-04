@@ -2,13 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.super-container-version-one .super-container-version-two {
+.super-container-version-one,
+.super-container-version-two {
   height: 80%;
   width: 99%;
-}
-
-.super-container-version-one {
-  margin-top: 10%;
 }
 
 .super-container-version-two {
@@ -27,24 +24,23 @@
   margin-left: 10%;
 }
 
-#general-home-article-view {
-  margin: 1% 1% 1% 10%;
-}
-
-#specific-home-article-view,
 .article-item {
-  background-color: rgba(102, 18, 168, 0.46);
   color: white;
   min-height: 230px;
   border: white solid 10px;
   border-radius: 20px;
   padding: 2% 2% 5%;
-  text-align: center;
 }
 
-#specific-home-article-view {
+.container .row .col {
   text-decoration: none;
-  width: 30%;
+  color: white;
+}
+
+.article-item,
+.container .row .col .card {
+  background-color: rgb(52, 127, 144);
+  text-align: center;
 }
 
 #option-buttons {
@@ -53,8 +49,15 @@
   display: inline-block;
 }
 
-#pagination {
-  margin: 2% 2% 2% 10%;
+#option-buttons-two {
+  margin-left: 10%;
+  margin-right: 10%;
+  display: inline-block;
+}
+
+.pagination {
+  margin-top: 10%;
+  margin-bottom: 2%;
 }
 
 #form-article {
@@ -62,6 +65,6 @@
   text-align: center;
 }
 
-#option-buttons li {
+#option-buttons li, #option-buttons-two li  {
   list-style: none;
 }

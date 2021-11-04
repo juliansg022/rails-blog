@@ -19,15 +19,20 @@
 </div>
 
 <div class="containter-fluid super-container-version-two">
-  <div class="row" id="comment-container">
-    <h2>Add a comment:</h2>
-    <div class="col-sm-9" id="new-comment">
-      <%= render 'comments/form' %>
+  <% if user_signed_in? %>
+    <div class="row" id="comment-container">
+      <h2>Add a comment:</h2>
+      <div class="col-sm-9" id="new-comment">
+        <%= render 'comments/form' %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="row" id="option-buttons">
-    <li><%= link_to "Back", root_path, class: "btn btn-primary" %>
-      <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-warning" %>
-      <%= link_to "Destroy Article", article_path(@article), method: :delete, data: { confirm: "Are you sure" }, class: "btn btn-danger" %></li>
+    <li><%= link_to "Back", articles_path, class: "btn btn-primary" %>
+      <% if user_signed_in? && @article.user_id == current_user.id %>
+        <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-warning" %>
+        <%= link_to "Destroy Article", article_path(@article), method: :delete, data: { confirm: "Are you sure" }, class: "btn btn-danger" %>
+      <% end %>
+    </li>
   </div>
 </div>
