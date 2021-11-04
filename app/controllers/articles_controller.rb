@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def my_articles
-    @pagy, @articles = pagy(Article.where(user_id: current_user.id))
+    @pagy, @articles = pagy(current_user.articles.all)
   end
 
   def index
