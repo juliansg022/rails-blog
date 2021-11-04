@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 10 }
+  acts_as_followable
+  acts_as_follower
 end

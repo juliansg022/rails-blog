@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
+# Is a Rubygem to allow any model to follow any other model. Read more: https://github.com/tcocca/acts_as_follower
+gem 'acts_as_follower', '~> 0.2.1'
 # Flexible authentication solution for Rails with Warden. Read more: https://github.com/heartcombo/devise
 gem 'devise', '~> 4.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
