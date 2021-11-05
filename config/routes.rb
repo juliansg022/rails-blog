@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   resources :users do
     get '/my_articles', to: 'articles#my_articles'
+    get '/my_profile', to: 'users#show'
+
+    member do
+      get :follow
+      get :unfollow
+    end
   end
-
-
 end
