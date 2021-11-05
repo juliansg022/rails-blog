@@ -4,10 +4,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
-  def my_articles
-    @pagy, @articles = pagy(current_user.articles.all)
-  end
-
   def index
     @pagy, @articles = pagy(Article.all)
   end

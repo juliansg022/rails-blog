@@ -1,0 +1,5 @@
+<p>Users <%= @user.name %> follows</p>
+
+<% @followings.each do |f| %>
+  <p> <%= f.name %> </p>
+<% end %>
