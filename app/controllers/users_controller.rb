@@ -43,6 +43,4 @@ class UsersController < ApplicationController
     @followings = @user.all_following
     @pagy, @followings = pagy(Follow.where(follower: @user))
   end
-
-
 end
