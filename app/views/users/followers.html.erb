@@ -1,5 +1,48 @@
-<p>Followers of <%= @user.name %></p>
+<div class="container" id="principal-container">
+  <h2>
+    <a href="<%= user_my_profile_path(@user) %>" title="Back to the <%= @user.name %>'s profile">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    Followers of
+    <%= @user.name %>
+  </h2>
+  <br/>
+  <table class="table table-hover align-middle align-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Member since</th>
+        <th scope="col">Number of published articles</th>
+        <th scope="col">Visit the profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% unless @followers.empty? %>
+        <% @followers.each_with_index do |f, i| %>
+          <tr>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= f.follower.name %></td>
+            <td><%= colombian_date(f.follower.created_at) %></td>
+            <td><%= f.follower.articles.count %></td>
+            <td>
+              <a href="<%= user_my_profile_path(f.follower) %>">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <th colspan="5">No records</th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<% @followers.each do |f| %>
-  <p> <%= f.name %> </p>
-<% end %>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li><%== pagy_bootstrap_nav(@pagy) %></li>
+    </ul>
+  </nav>
+</div>

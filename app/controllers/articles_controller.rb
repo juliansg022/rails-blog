@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @pagy, @articles = pagy(Article.all)
+    @pagy, @articles = pagy(Article.where(status: 'public'))
   end
 
   # R method (CRUD)

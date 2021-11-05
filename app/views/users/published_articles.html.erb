@@ -1,0 +1,51 @@
+<div class="container" id="principal-container">
+  <h2>
+    <a href="<%= user_my_profile_path(@user) %>" title="Back to the <%= @user.name %>'s profile">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <%= @user.name %>'s articles
+  </h2>
+  <br/>
+  <table class="table table-hover align-middle align-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Publication date</th>
+        <th scope="col">Number of comments</th>
+        <th scope="col">Publication status</th>
+        <th scope="col">Visit the article</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% unless @articles.empty? %>
+        <% @articles.each_with_index do |article, i| %>
+          <tr>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= article.title %></td>
+            <td><%= colombian_date(article.created_at) %></td>
+            <td><%= article.comments.count %></td>
+            <td><%= article.status %></td>
+            <td>
+              <% if article.status == 'public' %>
+                <a href="<%= article_path(article) %>">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <th colspan="6">No records</th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li><%== pagy_bootstrap_nav(@pagy) %></li>
+    </ul>
+  </nav>
+</div>
