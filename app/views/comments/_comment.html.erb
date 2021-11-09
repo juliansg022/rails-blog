@@ -1,7 +1,7 @@
 <% if comment.status == 'public' || (user_signed_in? && (current_user.id == comment.article.user_id || current_user.id == comment.user_id)) %>
   <div class="col-sm-3" id="comment-item">
     <p>
-      <strong><%= author_message(comment) %></strong>
+      <strong><%= author_message_comment(comment) %></strong>
     </p>
 
     <p><%= comment.body %></p>
