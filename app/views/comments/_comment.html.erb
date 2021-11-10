@@ -1,15 +1,14 @@
-<div class="col-sm-3" id="comment-item">
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.user.name %>
-  </p>
+<% if comment.status == 'public' || (user_signed_in? && (current_user.id == comment.article.user_id || current_user.id == comment.user_id)) %>
+  <div class="col-sm-3" id="comment-item">
+    <p>
+      <strong><%= author_message_comment(comment) %></strong>
+    </p>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-  <br><br>
-  <% if user_signed_in? && comment.user_id == current_user.id %>
-    <p id="destroy-comment"><%= link_to 'Destroy comment', [comment.article, comment], method: :delete, data: { confirm: "Are you sure" }, class: 'btn btn-danger'%></p>
-  <% end %>
-</div>
+    <p><%= comment.body %></p>
+    <br><br>
+    <p id="destroy-comment"><%= link_to 'Visit the author profile', user_my_profile_path(comment.user), class: 'btn btn-info' %></p>
+    <% if user_signed_in? && (comment.user_id == current_user.id || comment.article.user_id == current_user.id) %>
+      <p id="destroy-comment"><%= link_to 'Destroy comment', [comment.article, comment], method: :delete, data: { confirm: "Are you sure" }, class: 'btn btn-danger'%></p>
+    <% end %>
+  </div>
+<% end %>

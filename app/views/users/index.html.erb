@@ -1,0 +1,19 @@
+<div class="container" id="principal-container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @users.each do |user| %>
+      <a class="col" href="<%= user_my_profile_path(user) %>">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3><%= user.name %></h3>
+          </div>
+        </div>
+      <% end %>
+    </a>
+  </div>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li><%== pagy_bootstrap_nav(@pagy) %></li>
+    </ul>
+  </nav>
+</div>

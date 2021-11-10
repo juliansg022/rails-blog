@@ -10,6 +10,7 @@ import "channels"
 
 import 'bootstrap'
 import 'css/styles'
+import "@fortawesome/fontawesome-free/css/all"
 
 Rails.start()
 Turbolinks.start()

@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
 .general-container {
   height: 10%;
   background-color: #3CA5A5;
@@ -62,5 +61,13 @@
 
 #container-body {
   margin: 0;
-  padding:0
+  padding: 0
+}
+
+.table {
+  text-align: center
+}
+
+.container h2 a {
+  text-decoration: none
 }

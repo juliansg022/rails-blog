@@ -9,5 +9,16 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get '/my_articles', to: 'articles#my_articles', as: 'my_articles'
+  resources :users do
+    get '/my_articles', to: 'users#my_articles'
+    get '/my_profile', to: 'users#show'
+
+    member do
+      get :follow
+      get :unfollow
+      get :followers
+      get :following
+      get :published_articles
+    end
+  end
 end

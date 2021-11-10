@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   def destroy
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
-    @comment.destroy if @comment.user_id == current_user.id
+    @comment.destroy if @comment.user_id == current_user.id || @article.user_id == current_user.id
     redirect_to article_path(@article)
   end
 
