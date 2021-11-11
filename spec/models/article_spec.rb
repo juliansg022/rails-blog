@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-
-  user = User.new(id: 1, name: 'User', email: 'user@gmail.com')
-
   subject do
-    user.articles.new(title: 'Anything',
-                      body: 'Lorem ipsum',
-                      status: 'public')
+    user = User.create(name: 'User to Test', email: 'user@mail.com', password: 'password',
+                       password_confirmation: 'password')
+    user.articles.create(title: 'Anything',
+                         body: 'Lorem ipsum',
+                         status: 'public')
   end
 
-  describe "Associations" do
-  it { should belong_to(:user) }
-end
+  describe 'Associations' do
+    it { should belong_to(:user) }
+  end
 
   describe 'Validations' do
     it { should validate_presence_of(:user) }
@@ -40,8 +39,5 @@ end
       subject.user = nil
       expect(subject).to_not be_valid
     end
-
   end
-
-
 end

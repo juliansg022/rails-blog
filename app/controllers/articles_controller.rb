@@ -31,6 +31,12 @@ class ArticlesController < ApplicationController
   # U methods (CRUD)
   def edit
     @article = Article.find(params[:id])
+
+    if @article.user_id == current_user.id
+      render :edit
+    else
+      redirect_to @article
+    end
   end
 
   def update
