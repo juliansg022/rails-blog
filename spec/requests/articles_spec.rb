@@ -3,11 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe 'Articles', type: :request do
-  subject do
-    user = User.create(name: 'User to Test', email: 'user@mail.com', password: 'password',
-                       password_confirmation: 'password')
-    user.articles.create(title: 'Anything', body: 'Lorem ipsum', status: 'public')
-  end
+  let(:user) {
+    User.create(name: 'User to Test', email: 'user@mail.com', password: 'password',
+                password_confirmation: 'password')
+  }
+  subject {
+    Article.create(title: 'Anything',
+                   body: 'Lorem ipsum',
+                   status: 'public',
+                   user: user)
+  }
 
   describe 'access to routes as public user' do
     it 'returns a successful response when go to articles list' do

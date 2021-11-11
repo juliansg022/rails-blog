@@ -3,9 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
-  subject do
-    User.create(name: 'User to Test', email: 'user@mail.com', password: 'password', password_confirmation: 'password')
-  end
+  subject {
+    User.create(name: 'User to Test', email: 'user@mail.com', password: 'password',
+                password_confirmation: 'password')
+  }
 
   describe 'access to routes as public user' do
     it 'returns a successful response when go to users list' do
