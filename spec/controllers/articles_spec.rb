@@ -4,7 +4,9 @@ require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
   let(:user) do
-    User.create(name: 'User to Test', email: 'user@mail.com', password: 'password',
+    User.create(name: 'User to Test',
+                email: 'user@mail.com',
+                password: 'password',
                 password_confirmation: 'password')
   end
 
@@ -15,11 +17,11 @@ RSpec.describe ArticlesController, type: :controller do
                    user: user)
   end
 
+  let(:article_id) { article.id }
+
   subject do
     response
   end
-
-  let(:article_id) { article.id }
 
   # Test suite for GET
   describe 'GET' do
@@ -66,10 +68,20 @@ RSpec.describe ArticlesController, type: :controller do
   # Test suite for POST
   describe '.create an article via POST' do
     let(:valid_attributes) do
-      { body: 'my first article from test', title: 'Articles title', status: 'public', user: user }
+      {
+        body: 'my first article from test',
+        title: 'Articles title',
+        status: 'public',
+        user: user
+      }
     end
     let(:invalid_attributes) do
-      { body: 'my first article from test', title: 'Articles title', status: 'secret', user: user }
+      {
+        body: 'my first article from test',
+        title: 'Articles title',
+        status: 'secret',
+        user: user
+      }
     end
 
     before do
@@ -90,8 +102,20 @@ RSpec.describe ArticlesController, type: :controller do
 
   # Test suite for PATCH
   describe '.update an article via PATCH' do
-    let(:valid_attributes) { { body: 'my first article from test', title: 'Articles title', status: 'public' } }
-    let(:invalid_attributes) { { body: 'my first article from test', title: 'Articles title', status: 'secret' } }
+    let(:valid_attributes) do
+      {
+        body: 'my first article from test',
+        title: 'Articles title',
+        status: 'public'
+      }
+    end
+    let(:invalid_attributes) do
+      {
+        body: 'my first article from test',
+        title: 'Articles title',
+        status: 'secret'
+      }
+    end
 
     before do
       sign_in(user)
@@ -111,8 +135,20 @@ RSpec.describe ArticlesController, type: :controller do
 
   # Test suite for PUT
   describe '.update an article via PUT' do
-    let(:valid_attributes) { { body: 'my first article from test', title: 'Articles title', status: 'public' } }
-    let(:invalid_attributes) { { body: 'my first article from test', title: 'Articles title', status: 'secret' } }
+    let(:valid_attributes) do
+      {
+        body: 'my first article from test',
+        title: 'Articles title',
+        status: 'public'
+      }
+    end
+    let(:invalid_attributes) do
+      {
+        body: 'my first article from test',
+        title: 'Articles title',
+        status: 'secret'
+      }
+    end
 
     before do
       sign_in(user)

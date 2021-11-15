@@ -4,7 +4,9 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   let(:user) do
-    User.create(name: 'User to Test', email: 'user@mail.com', password: 'password',
+    User.create(name: 'User to Test',
+                email: 'user@mail.com',
+                password: 'password',
                 password_confirmation: 'password')
   end
   subject do
