@@ -3,178 +3,136 @@
 require 'rails_helper'
 
 RSpec.describe ArticlesController, type: :controller do
-  let(:user) do
-    User.create(name: 'User to Test',
-                email: 'user@mail.com',
-                password: 'password',
-                password_confirmation: 'password')
+  let(:user) { create(:user) }
+
+  let(:additional_user) { create(:user) }
+
+  let(:article) { create(:article, user: user) }
+
+  let(:attributes) do
+    {
+      title: article.title,
+      body: article.body,
+      status: article.status,
+      user_id: article.user.id
+    }
   end
 
-  let(:article) do
-    Article.create(title: 'Anything',
-                   body: 'Lorem ipsum',
-                   status: 'public',
-                   user: user)
-  end
+  let(:invalid_attributes) { attributes.merge(status: 'secret') }
 
-  let(:article_id) { article.id }
+  subject { response }
 
-  subject do
-    response
-  end
-
-  # Test suite for GET
-  describe 'GET' do
-    context '.index of articles via GET' do
-      it 'returns status code 200 because access was successful' do
+  describe '#index' do
+    context 'when successfully accessed' do
+      it 'returns status code 200' do
         get :index
         is_expected.to have_http_status(200)
       end
     end
+  end
 
-    context '.show an article via GET' do
-      it 'returns status code 200 because access was successful' do
-        get :show, params: { id: article_id }
+  describe '#show' do
+    context 'when successfully accessed' do
+      it 'returns status code 200' do
+        get :show, params: { id: article.id }
         is_expected.to have_http_status(200)
       end
     end
+  end
 
-    context '.new article form via GET' do
-      it 'returns status code 200 because access was successful' do
+  describe '#new' do
+    context 'when is logged in' do
+      it 'returns status code 200' do
         sign_in(user)
         get :new
         is_expected.to have_http_status(200)
       end
-
-      it 'returns status code 302 because not logged in and has been redirected' do
-        get :new
-        is_expected.to have_http_status(302)
-      end
     end
 
-    context '.edit an article via GET' do
-      it 'returns status code 200 because access was successful' do
-        sign_in(user)
-        get :edit, params: { id: article_id }
-        is_expected.to have_http_status(200)
-      end
-      it 'returns status code 302 because not logged in and has been redirected' do
-        get :edit, params: { id: article_id }
+    context 'when is not logged in' do
+      it 'returns status code 302' do
+        get :new
         is_expected.to have_http_status(302)
       end
     end
   end
 
-  # Test suite for POST
-  describe '.create an article via POST' do
-    let(:valid_attributes) do
-      {
-        body: 'my first article from test',
-        title: 'Articles title',
-        status: 'public',
-        user: user
-      }
+  describe '#edit' do
+    context 'when is logged in' do
+      it 'returns status code 200' do
+        sign_in(user)
+        get :edit, params: { id: article.id }
+        is_expected.to have_http_status(200)
+      end
     end
-    let(:invalid_attributes) do
-      {
-        body: 'my first article from test',
-        title: 'Articles title',
-        status: 'secret',
-        user: user
-      }
-    end
-
-    before do
-      sign_in(user)
-      get :new
-    end
-
-    it 'returns status code 302 because it was successfully created and has been redirected' do
-      post :create, params: { article: valid_attributes }
-      is_expected.to have_http_status(302)
-    end
-
-    it 'returns status code 200 because it remains in the new view until you can create with valid attributes' do
-      post :create, params: { article: invalid_attributes }
-      is_expected.to have_http_status(200)
+    context 'when is not logged in' do
+      it 'returns status code 302' do
+        get :edit, params: { id: article.id }
+        is_expected.to have_http_status(302)
+      end
     end
   end
 
-  # Test suite for PATCH
-  describe '.update an article via PATCH' do
-    let(:valid_attributes) do
-      {
-        body: 'my first article from test',
-        title: 'Articles title',
-        status: 'public'
-      }
-    end
-    let(:invalid_attributes) do
-      {
-        body: 'my first article from test',
-        title: 'Articles title',
-        status: 'secret'
-      }
+  describe '#create' do
+    before { sign_in(user) }
+    context 'when has valid attributes' do
+      it 'returns status code 302' do
+        post :create, params: { article: attributes }
+        is_expected.to have_http_status(302)
+      end
     end
 
-    before do
-      sign_in(user)
-      get :edit, params: { id: article_id }
-    end
-
-    it 'returns status code 302 because it was successfully updated and has been redirected' do
-      patch :update, params: { id: article_id, article: valid_attributes }
-      is_expected.to have_http_status(302)
-    end
-
-    it 'returns status code 200 because it remains in the edit view until you can update with valid attributes' do
-      patch :update, params: { id: article_id, article: invalid_attributes }
-      is_expected.to have_http_status(200)
+    context 'when has not valid attributes' do
+      it 'returns status code 200' do
+        post :create, params: { article: invalid_attributes }
+        is_expected.to have_http_status(200)
+      end
     end
   end
 
-  # Test suite for PUT
-  describe '.update an article via PUT' do
-    let(:valid_attributes) do
-      {
-        body: 'my first article from test',
-        title: 'Articles title',
-        status: 'public'
-      }
-    end
-    let(:invalid_attributes) do
-      {
-        body: 'my first article from test',
-        title: 'Articles title',
-        status: 'secret'
-      }
+  describe '#update' do
+    before { sign_in(user) }
+
+    context 'when is via patch' do
+      it 'returns status code 302' do
+        patch :update, params: { id: article.id, article: attributes }
+        is_expected.to have_http_status(302)
+      end
+
+      it 'returns status code 200' do
+        patch :update, params: { id: article.id, article: invalid_attributes }
+        is_expected.to have_http_status(200)
+      end
     end
 
-    before do
-      sign_in(user)
-      get :edit, params: { id: article_id }
-    end
+    context 'when is via put' do
+      it 'returns status code 302' do
+        put :update, params: { id: article.id, article: attributes }
+        is_expected.to have_http_status(302)
+      end
 
-    it 'returns status code 302 because it was successfully updated and has been redirected' do
-      put :update, params: { id: article_id, article: valid_attributes }
-      is_expected.to have_http_status(302)
-    end
-
-    it 'returns status code 200 because it remains in the edit view until you can update with valid attributes' do
-      put :update, params: { id: article_id, article: invalid_attributes }
-      is_expected.to have_http_status(200)
+      it 'returns status code 200' do
+        put :update, params: { id: article.id, article: invalid_attributes }
+        is_expected.to have_http_status(200)
+      end
     end
   end
 
-  # Test suite for DELETE
-  describe '.destroy an article via DELETE' do
-    before do
-      delete :destroy, params: { id: article_id }
+  describe '#destroy' do
+    context 'when is successfully' do
+      before { sign_in(user) }
+      it 'returns status code 302' do
+        delete :destroy, params: { id: article.id }
+        is_expected.to have_http_status(302)
+      end
     end
 
-    it 'returns status code 302 because it was successfully deleted and has been redirected' do
-      sign_in(user)
-      is_expected.to have_http_status(302)
+    context 'when fails' do
+      before { sign_in(additional_user) }
+      it 'returns status code 204' do
+        delete :destroy, params: { id: article.id }
+        is_expected.to have_http_status(204)
+      end
     end
   end
 end

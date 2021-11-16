@@ -60,6 +60,12 @@ group :test do
   gem 'webdrivers'
   # Provides RSpec- and Minitest-compatible one-liners to test common Rails functionality. Read more: https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda-matchers', '~> 5.0'
+  # Port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc. Read more: https://github.com/faker-ruby/faker
+  gem 'faker', '~> 2.19'
+  # Provides integration between factory_bot and rails 5.0 or newer. Read more: https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
+  # Strategies for cleaning databases. Can be used to ensure a clean slate for testing. Read more: https://github.com/DatabaseCleaner/database_cleaner
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
