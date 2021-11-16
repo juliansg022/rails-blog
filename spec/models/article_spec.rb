@@ -20,17 +20,17 @@ RSpec.describe Article, type: :model do
 
     context 'when a valid attribute is missing' do
       it 'is not valid without a title' do
-        subject { create(:article, user.user, title: nil) }
+        subject { create(:article, user: user, title: nil) }
         is_expected.not_to be_valid
       end
 
       it 'is not valid without a body' do
-        subject { create(:article, user.user, body: nil) }
+        subject { create(:article, user: user, body: nil) }
         is_expected.not_to be_valid
       end
 
       it 'is not valid without a status' do
-        subject { create(:article, user.user, status: nil) }
+        subject { create(:article, user: user, status: nil) }
         is_expected.not_to be_valid
       end
 
