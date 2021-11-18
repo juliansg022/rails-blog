@@ -8,6 +8,7 @@ module Visible
 
   included do
     validates :status, inclusion: { in: VALID_STATUSES }
+    validates :user, presence: true
   end
 
   class_methods do

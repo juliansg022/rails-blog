@@ -31,6 +31,12 @@ class ArticlesController < ApplicationController
   # U methods (CRUD)
   def edit
     @article = Article.find(params[:id])
+
+    if @article.user_id == current_user.id
+      render :edit
+    else
+      redirect_to @article
+    end
   end
 
   def update
@@ -46,9 +52,7 @@ class ArticlesController < ApplicationController
   # D methods (CRUD)
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy if @article.user_id == current_user.id
-
-    redirect_to root_path
+    redirect_to root_path if @article.user_id == current_user.id && @article.destroy
   end
 
   private

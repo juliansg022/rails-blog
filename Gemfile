@@ -37,6 +37,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # Is a testing framework for Rails 5+. Read more: https://github.com/rspec/rspec-rails
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
 end
 
 group :development do
@@ -56,6 +58,14 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Provides RSpec- and Minitest-compatible one-liners to test common Rails functionality. Read more: https://github.com/thoughtbot/shoulda-matchers
+  gem 'shoulda-matchers', '~> 5.0'
+  # Port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc. Read more: https://github.com/faker-ruby/faker
+  gem 'faker', '~> 2.19'
+  # Provides integration between factory_bot and rails 5.0 or newer. Read more: https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
+  # Strategies for cleaning databases. Can be used to ensure a clean slate for testing. Read more: https://github.com/DatabaseCleaner/database_cleaner
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
